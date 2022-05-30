@@ -1,6 +1,5 @@
-package ru.gb;
+package ru.gb.lesson1;
 
-import java.lang.reflect.Method;
 import java.util.Scanner;
 
 public class Main {
