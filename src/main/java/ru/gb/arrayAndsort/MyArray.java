@@ -42,6 +42,53 @@ public class MyArray {
         return false;
     }
 
+
+    boolean deleteAll(int value) {
+        int a = 0;
+        System.out.println(capacity);
+        for (int i = 0; i < capacity; i++) if (arr[i] == value) a++;
+        while(a!=0){
+            for (int i = 0; i < this.capacity; i++) if (this.arr[i] == value)
+                System.arraycopy(this.arr, i + 1, this.arr, i, this.capacity - i - 1);
+            --capacity;
+            a--;
+        }
+        return false;
+    }
+
+    boolean deleteAll(){
+        int[] toNew = new int[0];
+        this.arr = toNew;
+        while(capacity!=0){
+            for (int i = 0; i < this.capacity; i++)
+                --capacity;
+        }
+        return false;
+    }
+
+
+    public void insert(int idx, int value){
+        int[] arr1 = new int[idx];
+        int[] arr2 = new int[capacity-idx];
+        for (int i = 0; i < capacity; i++)if(i<idx)arr1[i] = this.arr[i];
+        for (int i = 0; i < capacity-idx; i++) arr2[i] = this.arr[i+idx];
+        capacity++;
+        this.arr = new int[capacity];
+        for (int i = 0; i < capacity; i++) {
+            if (i < idx) this.arr[i] = arr1[i];
+            else {
+                this.arr[i] = value;
+                break;
+            }
+        }
+        for (int i = 0; i < arr2.length; i++)this.arr[(arr1.length+1)+i]=arr2[i];
+    }
+
+
+
+
+
+
     void append(int value) {
         if (this.capacity == this.arr.length) {
             int[] old = this.arr;
